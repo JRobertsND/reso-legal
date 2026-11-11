@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invite · Reso</title>
+<meta name="description" content="Open the invite in Reso to follow and start making music together.">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    color-scheme: dark;
+    --bg: #000000;
+    --bg-elevated: #0c0c0e;
+    --text: #f5f5f7;
+    --muted: #8E8E93;
+    --purple: #7C3AED;
+    --purple-light: #A78BFA;
+    --border: #2C2C2E;
+    --font-display: "Syne", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background:
+      radial-gradient(ellipse 90% 60% at 70% 0%, rgba(124, 58, 237, 0.28), transparent 50%),
+      radial-gradient(ellipse 70% 45% at 10% 80%, rgba(124, 58, 237, 0.12), transparent 45%),
+      linear-gradient(180deg, #050508 0%, #000 45%, #050508 100%);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--purple-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(40px, 10vh, 96px) clamp(20px, 5vw, 48px) 40px;
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .logo-row img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.12em;
+    color: #fff;
+    margin: 0;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    color: #fff;
+  }
+  .lede {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  .open-app {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 10px;
+    background: var(--purple);
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none !important;
+    margin-bottom: 14px;
+  }
+  .open-app:hover { filter: brightness(1.08); }
+  .soon {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .home-link { font-size: 0.9rem; }
+  footer {
+    margin-top: auto;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    font-size: 0.875rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--purple-light); }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="content">
+    <div class="logo-row">
+      <img src="../../assets/icon.png" width="48" height="48" alt="Reso">
+      <p class="wordmark">RESO</p>
+    </div>
+    <h1 id="share-heading">Join this musician on Reso</h1>
+    <p class="lede" id="share-lede">Open the invite in Reso to follow and start making music together.</p>
+    <a class="open-app" id="open-app" href="reso://">Open in Reso</a>
+    <p class="soon">Coming Soon to iOS — if the app isn’t installed yet, check back soon.</p>
+    <a class="home-link" href="/">Back to resomusic.app</a>
+  </div>
+  <footer>
+    <a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a><a href="/community/">Community Guidelines</a><a href="/copyright/">Copyright / DMCA Policy</a><a href="/moderation/">Moderation &amp; Removal Policy</a>
+    <a href="mailto:support@resomusic.app">Support</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var kind = "invite";
+  var path = window.location.pathname || "";
+  var slug = "";
+  if (kind === "profile") {
+    var at = path.match(/^\/@([^\/\?#]+)/);
+    slug = at ? decodeURIComponent(at[1]) : "";
+  } else if (kind === "post") {
+    var post = path.match(/^\/post\/([^\/\?#]+)/);
+    slug = post ? decodeURIComponent(post[1]) : "";
+  } else if (kind === "invite") {
+    var invite = path.match(/^\/invite\/([^\/\?#]+)/);
+    slug = invite ? decodeURIComponent(invite[1]) : "";
+  }
+  var open = document.getElementById("open-app");
+  var heading = document.getElementById("share-heading");
+  if (kind === "profile" && slug) {
+    if (heading) heading.textContent = "Open @" + slug + " in Reso";
+    if (open) open.href = "reso://user/" + encodeURIComponent(slug);
+  } else if (kind === "post" && slug) {
+    if (open) open.href = "reso://feed-post/" + encodeURIComponent(slug);
+  } else if (kind === "invite" && slug) {
+    if (heading) heading.textContent = "Join @" + slug + " on Reso";
+    if (open) open.href = "reso://user/" + encodeURIComponent(slug);
+  }
+})();
+</script>
+</body>
+</html>

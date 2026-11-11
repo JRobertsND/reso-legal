@@ -1,0 +1,3 @@
+/@*       /share/profile/index.html  200
+/post/*   /share/post/index.html     200
+/invite/* /share/invite/index.html   200
